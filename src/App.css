@@ -1,7 +1,8 @@
 .App {
   background-color: #666666;
   text-align: center;
-  padding: 5rem 3rem;
+  /* padding: 5rem 3rem; */
+  padding: 5rem 2rem 1rem;
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
@@ -12,65 +13,48 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  /*        EASY + MEDUIM      */
+  /* grid-template-columns: auto auto auto auto auto; */
+  /* HARD */
+  grid-template-columns: auto auto auto auto auto auto;
 }
 
 .card {
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.12), 1px 1px 4px rgba(0,0,0,0.24);
-  /* background-color: #dcdcdc; */
-  background-color: #ffffff;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.12), 1px 1px 4px rgba(0, 0, 0, 0.24);
   margin: 0.2rem;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  /* border-radius: 1px; */
+}
+
+.card-open {
+  background-color: #ffffff;
+}
+
+.card-closed {
+  background-color: #bcbbcb;
 }
 
 .card-body {
-  /* margin: 0.1rem; */
+  width: 95%;
+  box-sizing: border-box;
+  height: 92%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+
+.card-body-closed {
   border: 1px solid #000000;
-  width: 97%;
-  height: 97%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* outline: 1px solid #000000; */
-  /* background-color: aqua; */
+  transform: rotateY(0deg);
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.empty-card {
+  width: 95%;
+  height: 92%;
+  margin: 0.2rem;
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
