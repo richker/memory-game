@@ -28,6 +28,30 @@ class GameBoard extends Component {
     this.setState({ gameBoard });
   }
 
+  checkMatch = (firstIndex, secondIndex) => {
+    let { gameBoard } = this.state;
+    let firstCard = gameBoard[firstIndex];
+    let secondCard = gameBoard[secondIndex];
+    if (
+      firstCard.color === secondCard.color &&
+      firstCard.pattern === secondCard.pattern
+    ) {
+      firstCard.isDone = true;
+      secondCard.isDone = true;
+      firstCard.isOpen = false;
+      secondCard.isOpen = false;
+      gameBoard[firstIndex] = firstCard;
+      gameBoard[secondIndex] = secondCard;
+      this.setState({ gameBoard, selectedIndex: null });
+    } else {
+      firstCard.isOpen = false;
+      secondCard.isOpen = false;
+      gameBoard[firstIndex] = firstCard;
+      gameBoard[secondIndex] = secondCard;
+      this.setState({ gameBoard, selectedIndex: null });
+    }
+  };
+
   handleSelectCard = index => {
     let { selectedIndex, gameBoard } = this.state;
     if (selectedIndex === null) {
@@ -35,34 +59,29 @@ class GameBoard extends Component {
       gameBoard[index].isOpen = true;
       this.setState({ selectedIndex: index, gameBoard });
     } else {
-      // check if has cards match
-      const firstCard = gameBoard[selectedIndex];
-      const secondCard = gameBoard[index];
-      if (
-        firstCard.color === secondCard.color &&
-        firstCard.pattern === secondCard.pattern
-      ) {
-        // cards match
-        gameBoard[selectedIndex].isDone = true;
-        gameBoard[index].isDone = true;
-      } else {
-        //  no cards match
-        gameBoard[index].isOpen = false;
-        this.setState({ selectedIndex: null, gameBoard });
-      }
+      gameBoard[index].isOpen = true;
+      this.setState({ gameBoard }, () =>
+        setTimeout(this.checkMatch(selectedIndex, index), 3000)
+      );
     }
   };
 
   render() {
-    const EmptyCard = ({ size }) => <div className="empty-card" />;
+    // const EmptyCard = ({ size }) => <div className="empty-card" />;
     const { gameBoard } = this.state;
 
     return (
       <div className="board-game">
         {gameBoard.map((card, index) => {
-          console.log("card", card);
-          console.log("index", index);
-          return <GameCard color={card.color} pattern={card.pattern} />;
+          if (card.isDone) return <div className="empty-card" />;
+          return (
+            <GameCard
+              key={index}
+              index={index}
+              card={card}
+              onSelect={this.handleSelectCard}
+            />
+          );
         })}
       </div>
     );

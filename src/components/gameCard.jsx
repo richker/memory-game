@@ -3,21 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 class GameCard extends Component {
-  state = {
-    isOpen: true
-  };
-
-  flipCard = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
-
   render() {
-    const { isOpen } = this.state;
-    const { color, pattern } = this.props;
+    const { index, card, onSelect } = this.props;
+    const { color, pattern, isOpen } = card;
     return (
       <React.Fragment>
         {!isOpen ? (
-          <div className="card card-closed" onClick={this.flipCard}>
+          <div className="card card-closed" onClick={() => onSelect(index)}>
             <div className="card-body card-body-closed">
               <FontAwesomeIcon
                 color="#cccccc"
