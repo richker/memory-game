@@ -61,7 +61,12 @@ class GameBoard extends Component {
     } else {
       gameBoard[index].isOpen = true;
       this.setState({ gameBoard }, () =>
-        setTimeout(this.checkMatch(selectedIndex, index), 3000)
+        setTimeout(
+          function() {
+            this.checkMatch(selectedIndex, index);
+          }.bind(this),
+          400
+        )
       );
     }
   };
