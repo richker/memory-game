@@ -16,8 +16,8 @@
   /*        EASY + MEDUIM      */
   /* grid-template-columns: auto auto auto auto auto; */
   /* HARD */
-  grid-template-columns: auto auto auto auto auto auto;
-  /* grid-template-columns: auto auto auto auto auto; */
+  /* grid-template-columns: auto auto auto auto auto auto; */
+  grid-template-columns: auto auto auto auto auto;
 }
 
 .card {

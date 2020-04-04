@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import GameBoard from "./components/gameBoard";
+import BoardArea from "./components/boardArea";
+import GameView from "./views/gameView";
 
 function App() {
   return (
     <div className="App">
-      <GameBoard />
+      <GameView level="meduim" />
     </div>
   );
 }

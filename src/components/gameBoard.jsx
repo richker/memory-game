@@ -24,32 +24,45 @@ class GameBoard extends Component {
   };
 
   componentDidMount() {
-    const gameBoard = createNewGame("hard");
+    const gameBoard = createNewGame(this.props.level);
     this.setState({ gameBoard });
   }
 
   checkMatch = (firstIndex, secondIndex) => {
+    let amount = 0;
     let { gameBoard } = this.state;
-    let firstCard = gameBoard[firstIndex];
-    let secondCard = gameBoard[secondIndex];
-    if (
-      firstCard.color === secondCard.color &&
-      firstCard.pattern === secondCard.pattern
-    ) {
-      firstCard.isDone = true;
-      secondCard.isDone = true;
-      firstCard.isOpen = false;
-      secondCard.isOpen = false;
-      gameBoard[firstIndex] = firstCard;
-      gameBoard[secondIndex] = secondCard;
-      this.setState({ gameBoard, selectedIndex: null });
+    if (firstIndex !== secondIndex) {
+      let firstCard = gameBoard[firstIndex];
+      let secondCard = gameBoard[secondIndex];
+      if (
+        // CARDS MATCH
+        firstCard.color === secondCard.color &&
+        firstCard.pattern === secondCard.pattern
+      ) {
+        firstCard.isDone = true;
+        secondCard.isDone = true;
+        firstCard.isOpen = false;
+        secondCard.isOpen = false;
+        gameBoard[firstIndex] = firstCard;
+        gameBoard[secondIndex] = secondCard;
+        amount = 1;
+      } else {
+        // NO CARDS MATCH
+        firstCard.isOpen = false;
+        secondCard.isOpen = false;
+        gameBoard[firstIndex] = firstCard;
+        gameBoard[secondIndex] = secondCard;
+
+        amount = 0;
+      }
     } else {
-      firstCard.isOpen = false;
-      secondCard.isOpen = false;
-      gameBoard[firstIndex] = firstCard;
-      gameBoard[secondIndex] = secondCard;
-      this.setState({ gameBoard, selectedIndex: null });
+      let card = gameBoard[secondIndex];
+      card.isOpen = false;
+      gameBoard[secondIndex] = card;
+      amount = -1;
     }
+    this.setState({ gameBoard, selectedIndex: null });
+    this.props.updatePoints(amount);
   };
 
   handleSelectCard = index => {
@@ -60,17 +73,12 @@ class GameBoard extends Component {
       this.setState({ selectedIndex: index, gameBoard });
     } else {
       gameBoard[index].isOpen = true;
-      this.setState({ gameBoard }, () =>
-        setTimeout(
-          function() {
-            this.checkMatch(selectedIndex, index);
-          }.bind(this),
-          400
-        )
-      );
+      this.setState({ gameBoard });
+      setTimeout(() => {
+        this.checkMatch(selectedIndex, index);
+      }, 350);
     }
   };
-
   render() {
     // const EmptyCard = ({ size }) => <div className="empty-card" />;
     const { gameBoard } = this.state;
