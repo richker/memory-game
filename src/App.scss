@@ -10,13 +10,12 @@
 
 .board-game {
   /* background-color: #000000; */
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   display: grid;
   /*        EASY + MEDUIM      */
   /* grid-template-columns: auto auto auto auto auto; */
   /* HARD */
-  /* grid-template-columns: auto auto auto auto auto auto; */
   grid-template-columns: auto auto auto auto auto;
 }
 
@@ -28,15 +27,41 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transform-style: preserve-3d;
+  &.flipped {
+    .card-closed {
+      transform: rotateY(180deg);
+    }
+    .card-open {
+      transform: rotateY(0deg);
+    }
+  }
+  .card-closed,
+  .card-open {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: -webkit-transform ease 500ms;
+    transition: transform ease 500ms;
+  }
+  .card-closed {
+    background-color: #bcbbcb;
+    transform: rotateY(0deg);
+    /* front tile styles go here! */
+  }
+  .card-open {
+    transform: rotateY(-180deg);
+    background-color: #ffffff;
+    /* back tile styles go here! */
+  }
 }
 
-.card-open {
-  background-color: #ffffff;
-}
+// .card-open {
+//   background-color: #ffffff;
+// }
 
-.card-closed {
-  background-color: #bcbbcb;
-}
+// .card-closed {
+//   background-color: #bcbbcb;
+// }
 
 .card-body {
   width: 95%;

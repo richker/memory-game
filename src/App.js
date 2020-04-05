@@ -1,7 +1,6 @@
 import React from "react";
-import "./App.css";
-import BoardArea from "./components/boardArea";
 import GameView from "./views/gameView";
+import "./App.scss";
 
 function App() {
   return (
