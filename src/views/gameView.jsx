@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import BoardArea from "../components/boardArea";
+import GameBoard from "../components/gameBoard";
+import GameHeader from "../components/gameHeader";
 
 class GameView extends Component {
   state = {
@@ -28,15 +29,18 @@ class GameView extends Component {
     }
   };
 
+  handleNewGame = () => {};
+
+  backToEntry = () => {};
+
   render() {
     const { level } = this.props;
     const { points } = this.state;
     return (
-      <React.Fragment>
-        {/* HEADER */}
-        <div style={{ color: "#FFFFFF" }}>POINTS: {points}</div>
-        <BoardArea level={level} updatePoints={this.updatePoints} />
-      </React.Fragment>
+      <div className="game-view">
+        <GameHeader points={points} />
+        <GameBoard level={level} updatePoints={this.updatePoints} />
+      </div>
     );
   }
 }

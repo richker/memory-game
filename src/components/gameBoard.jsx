@@ -8,21 +8,6 @@ class GameBoard extends Component {
     selectedIndex: null
   };
 
-  initGame = gameLevel => {
-    let gameSize;
-    switch (gameLevel) {
-      case "easy":
-        gameSize = 10;
-        break;
-      case "meduim":
-        gameSize = 20;
-        break;
-      case "hard":
-        gameSize = 30;
-        break;
-    }
-  };
-
   componentDidMount() {
     const gameBoard = createNewGame(this.props.level);
     this.setState({ gameBoard });

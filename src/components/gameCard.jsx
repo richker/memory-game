@@ -8,22 +8,24 @@ class GameCard extends Component {
     const { color, pattern, isOpen } = card;
     return (
       <div className={"card" + (isOpen ? " flipped" : "")}>
-        <div className=" card-closed" onClick={() => onSelect(index)}>
-          <div className="card-body card-body-closed">
-            <FontAwesomeIcon
-              color="#cccccc"
-              size="3x"
-              icon={faQuestionCircle}
-              style={{
-                border: "0.5px solid #000000",
-                borderRadius: "50%",
-                backgroundColor: "#000000"
-              }}
-            />
+        <div className="front" onClick={() => onSelect(index)}>
+          <div className="card-body">
+            <div className="front-body">
+              <FontAwesomeIcon
+                color="#cccccc"
+                size="3x"
+                icon={faQuestionCircle}
+                style={{
+                  border: "0.5px solid #000000",
+                  borderRadius: "50%",
+                  backgroundColor: "#000000"
+                }}
+              />
+            </div>
           </div>
         </div>
 
-        <div className="card-open" onClick={this.flipCard}>
+        <div className="back" onClick={this.flipCard}>
           <div className="card-body">
             <FontAwesomeIcon color={color} size="4x" icon={pattern} />
           </div>

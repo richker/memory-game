@@ -5,7 +5,7 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
-      <GameView level="meduim" />
+      <GameView level="hard" />
     </div>
   );
 }

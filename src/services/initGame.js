@@ -62,6 +62,8 @@ const getGameSize = level => {
       return 20;
     case "hard":
       return 30;
+    default:
+      break;
   }
 };
 
