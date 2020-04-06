@@ -50,3 +50,8 @@ export const updatePoints = (points, sequence, amount, level) => {
   }
   return { points, sequence };
 };
+
+export const isGameOver = (gameBoard) => {
+  const isDone = (card) => card.isDone;
+  return gameBoard.every(isDone);
+};

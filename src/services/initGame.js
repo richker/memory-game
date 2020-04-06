@@ -126,5 +126,6 @@ export const makeEnterGrid = () => {
     });
   });
   enterGrid.sort(() => Math.random() - 0.5); // shuffle gameCards array
+  enterGrid.sort(() => Math.random() - 0.5); // shuffle gameCards array
   return enterGrid;
 };

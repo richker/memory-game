@@ -5,7 +5,7 @@ const GameBoard = ({ gameBoard, onSelectCard, level }) => {
   return (
     <div className={`board-game ${level}`}>
       {gameBoard.map((card, index) => {
-        if (card.isDone) return <div className="empty-card" />;
+        if (card.isDone) return <div key={index} className="empty-card" />;
         return (
           <GameCard
             key={index}

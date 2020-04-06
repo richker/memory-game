@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import GameBoard from "../components/gameBoard";
 import GameHeader from "../components/gameHeader";
 import { createNewGame } from "../services/initGame";
-import { checkMatch, updatePoints } from "../services/playService";
+import { checkMatch, updatePoints, isGameOver } from "../services/playService";
 
 class GameView extends Component {
   state = {
@@ -10,11 +11,14 @@ class GameView extends Component {
     selectedIndex: null,
     points: 0,
     sequence: 1,
+    level: null,
+    redirect: false,
+    gameDone: false,
   };
 
   componentDidMount() {
-    const gameBoard = createNewGame(this.props.level);
-    this.setState({ gameBoard });
+    const gameBoard = createNewGame(this.props.location.state.level);
+    this.setState({ gameBoard, level: this.props.location.state.level });
   }
 
   handleSelectCard = (index) => {
@@ -27,7 +31,7 @@ class GameView extends Component {
       gameBoard[index].isOpen = true;
       this.setState({ gameBoard });
       setTimeout(() => {
-        const { level } = this.props;
+        const { level } = this.state;
         const matchResult = checkMatch(gameBoard, selectedIndex, index);
         const updateResult = updatePoints(
           points,
@@ -41,12 +45,19 @@ class GameView extends Component {
           sequence: updateResult.sequence,
           selectedIndex: null,
         });
+        const gameDone = isGameOver(matchResult.gameBoard);
+        this.setState({ gameDone });
+        if (gameDone) {
+          setTimeout(() => {
+            this.setState({ redirect: true });
+          }, 2000);
+        }
       }, 350);
     }
   };
 
   handleNewGame = () => {
-    const gameBoard = createNewGame(this.props.level);
+    const gameBoard = createNewGame(this.state.level);
     this.setState({
       gameBoard,
       selectedIndex: null,
@@ -56,26 +67,36 @@ class GameView extends Component {
   };
 
   handleBack = () => {
-    console.log("back!");
+    this.setState({ redirect: true });
   };
 
   render() {
-    const { points, gameBoard } = this.state;
-    const { level } = this.props;
-    console.log("level", level);
+    const { points, gameBoard, level, redirect, gameDone } = this.state;
+    if (redirect) {
+      return <Redirect to={{ pathname: "/enter" }} />;
+    }
     return (
       <div className="view game">
         <GameHeader
           onNew={this.handleNewGame}
-          onBack={this.backToEntry}
+          onBack={this.handleBack}
           points={points}
         />
 
-        <GameBoard
-          level={level}
-          gameBoard={gameBoard}
-          onSelectCard={this.handleSelectCard}
-        />
+        <div className="board-area">
+          <GameBoard
+            level={level}
+            gameBoard={gameBoard}
+            onSelectCard={this.handleSelectCard}
+          />
+        </div>
+        <div
+          className={
+            "game-done-card" + (gameDone ? " long-fade-in" : "fade-out")
+          }
+        >
+          Completed !
+        </div>
       </div>
     );
   }

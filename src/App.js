@@ -5,26 +5,12 @@ import EntryView from "./views/entryView";
 import "./App.scss";
 
 class App extends Component {
-  state = {
-    gameLevel: null,
-  };
-
-  handleLevel = (newValue) => {
-    console.log("newValue", newValue);
-    this.setState({ gameLevel: newValue });
-  };
-
   render() {
-    const { gameLevel } = this.state;
-    console.log("gameLevel", gameLevel);
     return (
       <div className="App">
         <Switch>
-          <Route path="/game" render={() => <GameView level={gameLevel} />} />
-          <Route
-            path="/enter"
-            render={() => <EntryView selectLevel={this.handleLevel} />}
-          />
+          <Route path="/game" component={GameView} />
+          <Route path="/enter" component={EntryView} />
           <Redirect from="/" exact to="/enter" />
           <Redirect to="/enter" />
         </Switch>
