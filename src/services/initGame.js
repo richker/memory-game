@@ -13,7 +13,7 @@ import {
   faRobot,
   faDice,
   faSplotch,
-  faPalette
+  faPalette,
 } from "@fortawesome/free-solid-svg-icons";
 
 const colorBank = [
@@ -31,7 +31,7 @@ const colorBank = [
   "#596774",
   "#34495E",
   "#2A80B9",
-  "#576474"
+  "#576474",
 ];
 
 const patternBank = [
@@ -49,12 +49,12 @@ const patternBank = [
   faRobot,
   faDice,
   faSplotch,
-  faPalette
+  faPalette,
 ];
 
-const getRandomNum = max => Math.floor(Math.random() * Math.floor(max));
+const getRandomNum = (max) => Math.floor(Math.random() * Math.floor(max));
 
-const getGameSize = level => {
+const getGameSize = (level) => {
   switch (level) {
     case "easy":
       return 10;
@@ -67,7 +67,7 @@ const getGameSize = level => {
   }
 };
 
-const getColors = numberOfColors => {
+const getColors = (numberOfColors) => {
   let colors = [];
   while (colors.length < numberOfColors) {
     let randomIndex = getRandomNum(15);
@@ -81,7 +81,7 @@ const getColors = numberOfColors => {
   return colors;
 };
 
-const getPatterns = numberOfPatterns => {
+const getPatterns = (numberOfPatterns) => {
   let pattrens = [];
   while (pattrens.length < numberOfPatterns) {
     let randomIndex = getRandomNum(15);
@@ -109,9 +109,22 @@ const createGameCards = (colors, patterns) => {
   return gameCards;
 };
 
-export const createNewGame = gameLevel => {
+export const createNewGame = (gameLevel) => {
   const gameize = getGameSize(gameLevel);
   const colors = getColors(gameize / 2);
   const patterns = getPatterns(gameize / 2);
   return createGameCards(colors, patterns);
+};
+
+export const makeEnterGrid = () => {
+  const colors = colorBank;
+  const patterns = patternBank;
+  let enterGrid = [];
+  colors.forEach((color) => {
+    patterns.forEach((pattern) => {
+      enterGrid.push({ color, pattern });
+    });
+  });
+  enterGrid.sort(() => Math.random() - 0.5); // shuffle gameCards array
+  return enterGrid;
 };

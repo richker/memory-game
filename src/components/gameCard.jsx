@@ -7,8 +7,11 @@ class GameCard extends Component {
     const { index, card, onSelect } = this.props;
     const { color, pattern, isOpen } = card;
     return (
-      <div className={"card" + (isOpen ? " flipped" : "")}>
-        <div className="front" onClick={() => onSelect(index)}>
+      <div
+        className={"card" + (isOpen ? " flipped" : "")}
+        onClick={() => onSelect(index)}
+      >
+        <div className="front">
           <div className="card-body">
             <div className="front-body">
               <FontAwesomeIcon
@@ -18,7 +21,7 @@ class GameCard extends Component {
                 style={{
                   border: "0.5px solid #000000",
                   borderRadius: "50%",
-                  backgroundColor: "#000000"
+                  backgroundColor: "#000000",
                 }}
               />
             </div>
