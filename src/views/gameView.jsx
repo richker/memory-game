@@ -95,7 +95,7 @@ class GameView extends Component {
             "game-done-card" + (gameDone ? " long-fade-in" : "fade-out")
           }
         >
-          Completed !
+          {gameDone && "Completed !"}
         </div>
       </div>
     );
