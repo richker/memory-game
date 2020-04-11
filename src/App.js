@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import GameView from "./views/gameView";
 import EntryView from "./views/entryView";
-import "./App.scss";
+import "./assets/scss/style.scss";
 
 class App extends Component {
   render() {
