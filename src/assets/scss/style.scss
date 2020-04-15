@@ -49,7 +49,13 @@ $break4open: "(min-width:1440px)";
   background-color: #e2e1e0;
   grid-template-columns: repeat(25, auto);
   grid-template-rows: repeat(9, auto);
-  grid-gap: 0.2rem;
+
+  @media #{$break1, $break2} {
+    grid-gap: 0.1rem;
+  }
+  @media #{$break3, $break4open} {
+    grid-gap: 0.2rem;
+  }
 }
 
 .grid-wallpaper-card {
@@ -60,6 +66,12 @@ $break4open: "(min-width:1440px)";
   align-items: center;
   height: 100%;
   width: 100%;
+  @media #{$break1, $break2} {
+    font-size: 0.7rem;
+  }
+  @media #{$break3, $break4open} {
+    font-size: 1rem;
+  }
 }
 
 .enter-card {

@@ -32,11 +32,7 @@ class EntryView extends Component {
           {pics.map((pic, key) => {
             return (
               <div key={key} className="grid-wallpaper-card">
-                <FontAwesomeIcon
-                  color={pic.color}
-                  size="sm"
-                  icon={pic.pattern}
-                />
+                <FontAwesomeIcon color={pic.color} icon={pic.pattern} />
               </div>
             );
           })}
