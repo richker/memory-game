@@ -1,7 +1,19 @@
+/* Responsive Variables */
+$break1: "(max-width:767px)";
+$break2: "(min-width:768px) and (max-width:1023px)";
+$break3: "(min-width:1024px) and (max-width:1439px)";
+$break2open: "(min-width:768px)";
+$break3open: "(min-width:1024px)";
+$break4open: "(min-width:1440px)";
+
 .App {
+  font-size: 1px; /*for using REM units*/
   text-align: center;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   box-sizing: content-box;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -17,8 +29,8 @@
 
 .view {
   box-sizing: border-box;
-  width: inherit;
-  height: inherit;
+  width: 100%;
+  height: 100%;
   padding: 0.7rem;
   display: flex;
   flex-direction: column;
@@ -51,14 +63,28 @@
 }
 
 .enter-card {
-  width: 36%;
-  height: 90%;
-  left: 32%;
   position: absolute;
-  top: 5%;
   background-color: #dddddd;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  @media #{$break1} {
+    top: 6%;
+    width: 62%;
+    height: 85%;
+    left: 19%;
+  }
+  @media #{$break2} {
+    top: 5%;
+    width: 50%;
+    height: 90%;
+    left: 25%;
+  }
+  @media #{$break3, $break4open} {
+    top: 5%;
+    width: 36%;
+    height: 90%;
+    left: 32%;
+  }
 }
 
 .enter-card-body {
@@ -148,21 +174,44 @@
 .enter-title {
   font-family: "Special Elite", cursive;
   font-family: "Luckiest Guy", cursive;
-  font-size: 50px;
-  word-spacing: 1rem;
+
+  @media #{$break1, $break2} {
+    font-size: 45px;
+    word-spacing: 0.7rem;
+  }
+  @media #{$break3, $break4open} {
+    font-size: 50px;
+    word-spacing: 1rem;
+  }
 }
 
 .enter-footer-container {
   height: 2.5rem;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 3rem 0;
+  @media #{$break1, $break2} {
+    padding: 0 0.8rem 0;
+  }
+  @media #{$break3, $break4open} {
+    padding: 0 3rem 0;
+  }
   display: flex;
   justify-content: space-evenly;
 }
 
 .contact-link .contact-item {
-  font-size: 1rem;
+  @media #{$break1} {
+    font-size: 0.8rem;
+  }
+  @media #{$break2} {
+    font-size: 0.9rem;
+  }
+  @media #{$break3} {
+    font-size: 1rem;
+  }
+  @media #{$break4open} {
+    font-size: 1.1rem;
+  }
 }
 
 .contact-link {
@@ -191,6 +240,12 @@
 }
 .buttons-container {
   display: flex;
+  @media #{$break1, $break2} {
+    font-size: 1rem;
+  }
+  @media #{$break3, $break4open} {
+    font-size: 1.2rem;
+  }
 }
 .icon-btn {
   width: 3rem;
@@ -296,6 +351,12 @@
   align-items: center;
   padding: 0.6rem;
   box-sizing: border-box;
+  @media #{$break1, $break2} {
+    font-size: 2rem;
+  }
+  @media #{$break3, $break4open} {
+    font-size: 3rem;
+  }
 }
 
 .front-body {

@@ -16,7 +16,7 @@ class GameCard extends Component {
             <div className="front-body">
               <FontAwesomeIcon
                 color="#cccccc"
-                size="3x"
+                // size="8x"
                 icon={faQuestionCircle}
                 style={{
                   border: "0.5px solid #000000",
@@ -30,7 +30,7 @@ class GameCard extends Component {
 
         <div className="back" onClick={this.flipCard}>
           <div className="card-body">
-            <FontAwesomeIcon color={color} size="4x" icon={pattern} />
+            <FontAwesomeIcon color={color} icon={pattern} />
           </div>
         </div>
       </div>

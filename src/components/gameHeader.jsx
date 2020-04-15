@@ -38,10 +38,10 @@ class GameHeader extends Component {
         </div>
         <div className="buttons-container">
           <span className="icon-btn" onClick={onNew}>
-            <FontAwesomeIcon size="lg" icon={faUndo} />
+            <FontAwesomeIcon icon={faUndo} />
           </span>
           <span className="icon-btn" onClick={onBack}>
-            <FontAwesomeIcon size="lg" icon={faLongArrowAltLeft} />
+            <FontAwesomeIcon icon={faLongArrowAltLeft} />
           </span>
         </div>
       </div>
