@@ -60,7 +60,7 @@ class EntryView extends Component {
                   className="level-btn meduim"
                   onClick={() => this.handleLevel("meduim")}
                 >
-                  M E D U I M
+                  M E D I U M
                 </div>
               </div>
               <div className="level-btn-container">
