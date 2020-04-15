@@ -306,18 +306,36 @@ $break4open: "(min-width:1440px)";
   display: grid;
 
   &.easy {
-    grid-template-columns: repeat(5, auto);
-    grid-template-rows: repeat(2, auto);
+    @media #{$break1, $break2} {
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(5, auto);
+    }
+    @media #{$break3, $break4open} {
+      grid-template-columns: repeat(5, auto);
+      grid-template-rows: repeat(2, auto);
+    }
   }
 
   &.meduim {
-    grid-template-columns: repeat(5, auto);
-    grid-template-rows: repeat(4, auto);
+    @media #{$break1, $break2} {
+      grid-template-columns: repeat(4, auto);
+      grid-template-rows: repeat(5, auto);
+    }
+    @media #{$break3, $break4open} {
+      grid-template-columns: repeat(5, auto);
+      grid-template-rows: repeat(4, auto);
+    }
   }
 
   &.hard {
-    grid-template-columns: repeat(6, auto);
-    grid-template-rows: repeat(5, auto);
+    @media #{$break1, $break2} {
+      grid-template-columns: repeat(5, auto);
+      grid-template-rows: repeat(6, auto);
+    }
+    @media #{$break3, $break4open} {
+      grid-template-columns: repeat(6, auto);
+      grid-template-rows: repeat(5, auto);
+    }
   }
 
   grid-gap: 0.4rem;
