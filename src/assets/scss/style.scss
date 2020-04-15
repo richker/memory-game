@@ -329,8 +329,8 @@ $break4open: "(min-width:1440px)";
 
   &.hard {
     @media #{$break1, $break2} {
-      grid-template-columns: repeat(5, auto);
-      grid-template-rows: repeat(6, auto);
+      grid-template-columns: repeat(3, auto);
+      grid-template-rows: repeat(10, auto);
     }
     @media #{$break3, $break4open} {
       grid-template-columns: repeat(6, auto);
