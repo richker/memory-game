@@ -265,19 +265,27 @@ $break4open: "(min-width:1440px)";
 
 .game-done-card {
   position: absolute;
-  width: 60%;
-  left: 20%;
-  height: 80%;
-  top: 15%;
   font-family: "Special Elite", cursive;
   font-family: "Luckiest Guy", cursive;
-  font-size: 60px;
-  word-spacing: 2rem;
-  letter-spacing: 2rem;
   vertical-align: middle;
   box-sizing: border-box;
-  padding-top: 15%;
   color: #ffffff;
+  height: 80%;
+  top: 15%;
+  padding-top: 15%;
+  @media #{$break1, $break2} {
+    font-size: 45px;
+    letter-spacing: 0.5rem;
+    width: 96%;
+    left: 2%;
+  }
+  @media #{$break3, $break4open} {
+    font-size: 60px;
+    word-spacing: 2rem;
+    letter-spacing: 2rem;
+    width: 60%;
+    left: 20%;
+  }
 }
 
 .board-game {

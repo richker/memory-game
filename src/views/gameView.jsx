@@ -23,7 +23,7 @@ class GameView extends Component {
 
   handleSelectCard = (index) => {
     let { selectedIndex, gameBoard, points, sequence, level } = this.state;
-    console.log("level");
+    const waitTime = level === "hard" ? 300 : level === "meduim" ? 500 : 700;
     if (selectedIndex === null) {
       // when no open card
       gameBoard[index].isOpen = true;
@@ -53,7 +53,7 @@ class GameView extends Component {
             this.setState({ redirect: true });
           }, 2000);
         }
-      }, 550);
+      }, waitTime);
     }
   };
 
